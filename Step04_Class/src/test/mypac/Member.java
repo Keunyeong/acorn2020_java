@@ -11,9 +11,3 @@ public class Member {
 		System.out.println(this.num+" | "+this.name+" | "+this.addr);
 	}
 }
-
-
-
-
-
-
