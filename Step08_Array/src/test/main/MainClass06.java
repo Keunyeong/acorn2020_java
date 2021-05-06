@@ -17,7 +17,7 @@ public class MainClass06 {
 		
 		//5번 문자열을 입력 받기 위해 for 문을 구성한다. 
 		for(int i=0; i<5; i++) {
-			System.out.println("문자열 입력:");
+			System.out.print("문자열 입력:");
 			String str=scan.nextLine();
 			//입력받은 문자열의 참조값을 배열에 순서대로 저장하기
 			msgs[i]=str;

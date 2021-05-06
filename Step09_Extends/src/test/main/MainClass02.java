@@ -6,6 +6,7 @@ import test.mypac.SmartPhone;
 
 public class MainClass02 {
 	public static void main(String[] args) {
+		// Polymorphism 다형성을 갖는다.
 		//SmartPhone 객체를 생성해서 SmartPhone type 의 지역변수 p1 에 담기 
 		SmartPhone p1=new SmartPhone(); 
 		//p1 에 담긴 참조값을 HandPhone type 지역변수 p2 에 담기
