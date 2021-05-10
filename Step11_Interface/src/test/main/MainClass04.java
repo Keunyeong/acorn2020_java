@@ -11,7 +11,7 @@ public class MainClass04 {
 			}
 		});
 		
-		Drill d1=()->{
+		Drill d1=()->{//람다 함수 (메소드가 하나일때만 가능)
 			System.out.println("벽에 20mm 의 구멍내기");
 		};
 		
