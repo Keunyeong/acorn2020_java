@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class MainClass14 {
 	public static void main(String[] args) {
-		File memoFile=new File("c:/acorn2020/myFolder/memo.txt");
+		File memoFile=new File("c:/acorn202104/myFolder/memo.txt");
 		try {
 			if(!memoFile.exists()) {
 				System.out.println("파일이 존재 하지 않습니다.");

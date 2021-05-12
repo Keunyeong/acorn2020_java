@@ -23,7 +23,7 @@ public class MainClass01 {
 		//프레임이 보이도록 한다. 
 		f.setVisible(true);
 		
-		new MyFrame("나만의 프레임");
+//		new MyFrame("나만의 프레임");
 	}
 	
 	public static class MyFrame extends JFrame{

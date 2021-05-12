@@ -9,7 +9,7 @@ public class MainClass10 {
 		f1.mkdir();
 		System.out.println("디렉토리를 만들었습니다.");
 		for(int i=0; i<10; i++) {
-			File tmp=new File("c:/acorn2020/myFolder/new_folder"+i);
+			File tmp=new File("c:/acorn202104/myFolder/new_folder"+i);
 			tmp.mkdir();
 		}
 		System.out.println("디렉토리 10개를 만들었습니다.");

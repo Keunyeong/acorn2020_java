@@ -52,7 +52,6 @@ public class MyFrame extends JFrame implements ActionListener{
 		}else if(obj == removeBtn) {//삭제 버튼을 눌렀다면 
 			JOptionPane.showMessageDialog(this, "삭제합니다.");
 		}
-	
 	}
 }
 

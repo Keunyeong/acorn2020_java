@@ -6,12 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class MyFrame extends JFrame{
-	
-	//생성자
+	public static final int KIMGURA=0;
+	//생성자ku
 	public MyFrame(String title) {
 		super(title);
 		setBounds(100, 100, 500, 500);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(KIMGURA);
 		//레이 아웃 메니저를 FlowLayout 으로 지정한다.
 		//setLayout(new FlowLayout(0));
 		setLayout(new FlowLayout(FlowLayout.LEFT));

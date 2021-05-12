@@ -11,7 +11,7 @@ public class MainClass02 {
 		// 2byte 처리 스트림
 		InputStreamReader isr=new InputStreamReader(is);
 		try {
-			System.out.println("입력:");
+			System.out.print("입력:");
 			//한글의 코드값도 읽어들일수 있다. (2 byte 처리)
 			int code=isr.read();
 			System.out.println("code:"+code);
