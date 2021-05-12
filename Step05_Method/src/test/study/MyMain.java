@@ -33,7 +33,5 @@ public class MyMain {
 		giveme.AccountPay();
 		
 		PickNumber.PickNum(3);
-		
-		
 	}
 }

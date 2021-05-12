@@ -10,5 +10,7 @@ public class MyMain01 {
 		
 		// 문자를 숫자로 바꾸기
 		int num3 = Integer.parseInt(str2);
+		
+		System.out.println(num1%6);
 	}
 }
