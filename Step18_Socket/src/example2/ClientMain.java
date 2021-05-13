@@ -14,7 +14,7 @@ public class ClientMain {
 		
 		Socket socket=null;
 		try {
-			socket=new Socket("192.168.0.30", 5000);
+			socket=new Socket("127.0.0.1", 5000);
 			System.out.println("Socket 연결 성공!");
 			//문자열을 서버에 전송(출력Output) 하기
 			OutputStream os=socket.getOutputStream();

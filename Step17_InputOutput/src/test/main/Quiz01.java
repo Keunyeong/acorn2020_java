@@ -16,7 +16,7 @@ public class Quiz01 {
 		System.out.println("저장할 문자열 입력:");
 		String str=scan.nextLine();
 		
-		File file1=new File("c:/acorn2020/myFolder/quiz.txt");
+		File file1=new File("c:/acorn202104/myFolder/quiz.txt");
 		try {
 			boolean isExist=file1.exists();
 			if(!isExist) {
