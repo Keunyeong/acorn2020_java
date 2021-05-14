@@ -7,14 +7,12 @@ public class MemberDto {
 	private String addr;
 	//default 생성자 만들기
 	public MemberDto() {}
-	//인자로 필드에 저장할 값을 전달 받는 생성자
 	public MemberDto(int num, String name, String addr) {
 		super();
 		this.num = num;
 		this.name = name;
 		this.addr = addr;
 	}
-	//필드의 접근 메소드 setter, getter 메소드 
 	public int getNum() {
 		return num;
 	}
@@ -33,6 +31,7 @@ public class MemberDto {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	
 	
 }
 
