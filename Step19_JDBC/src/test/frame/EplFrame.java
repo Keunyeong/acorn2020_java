@@ -17,9 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import test.dao.BirthDao;
 import test.dao.EplDao;
-import test.dto.BirthDto;
 import test.dto.EplDto;
 
 public class EplFrame extends JFrame 
@@ -89,7 +87,7 @@ public class EplFrame extends JFrame
 	}
 	
 	public static void main(String[] args) {
-		birthFrame f=new birthFrame();
+		EplFrame f=new EplFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setBounds(100, 100, 800, 500);
 		f.setVisible(true);

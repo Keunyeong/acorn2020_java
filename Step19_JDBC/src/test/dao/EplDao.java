@@ -18,7 +18,7 @@ public class EplDao {
 		}
 		return dao;
 	}
-	public EplDto getData(int num) {
+	public EplDto getData(int rank) {
 		EplDto dto = null;
 
 		Connection conn = null;
@@ -31,11 +31,11 @@ public class EplDao {
 					+ " FROM epl" 
 					+ " WHERE rank=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, rank);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				dto = new EplDto();
-				dto.setRank(num);
+				dto.setRank(rank);
 				dto.setTeam(rs.getString("team"));
 				dto.setPoint(rs.getInt("point"));
 			}
@@ -62,12 +62,12 @@ public class EplDao {
 		ResultSet rs = null;
 		try {
 			conn = new DBConnect().getConn();
-			String sql = "SELECT rank,team,point" + " FROM epl" + " ORDER BY num ASC";
+			String sql = "SELECT rank,team,point" + " FROM epl" + " ORDER BY rank ASC";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				int rank = rs.getInt("num");
-				String team = rs.getString("name");
+				int rank = rs.getInt("rank");
+				String team = rs.getString("team");
 				int point = rs.getInt("point");
 				EplDto dto = new EplDto();
 				dto.setRank(rank);
@@ -152,7 +152,7 @@ public class EplDao {
 			return false;
 		}
 	}
-	public boolean delete(int num) {
+	public boolean delete(int rank) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
@@ -160,10 +160,10 @@ public class EplDao {
 			conn = new DBConnect().getConn();
 			//실행할 sql(Insert or Update or Delete) 문 작성
 			String sql = "delete from epl"
-					+ " where num = ? ";
+					+ " where rank = ? ";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 바인딩할 내용이 있으면 여기서 한다.
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, rank);
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

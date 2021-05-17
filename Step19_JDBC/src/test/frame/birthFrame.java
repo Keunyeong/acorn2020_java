@@ -32,7 +32,7 @@ public class birthFrame extends JFrame
 		JLabel label1=new JLabel("이름");
 		inputName=new JTextField(10);
 		
-		JLabel label2=new JLabel("주소");
+		JLabel label2=new JLabel("생일");
 		inputBirthday=new JTextField(10);
 		
 		JButton saveBtn=new JButton("저장");
