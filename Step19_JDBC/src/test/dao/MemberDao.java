@@ -27,7 +27,7 @@ public class MemberDao {
 	//외부에서 객체 생성하지 못하도록 한다. 
 	private MemberDao() {}
 	
-	//참조값을 리턴해주는 메소드
+	//참조값을 리턴해주는 메소드 (오직 하나만 만들기 위해_)
 	public static MemberDao getInstance() {
 		if(dao==null) {//최초 호출되면 null 이므로 
 			dao=new MemberDao();//객체를 생성해서 static 필드에 담는다. 

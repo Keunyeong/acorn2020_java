@@ -162,28 +162,9 @@ public class MemoFrame extends JFrame
 				//DB에 저장하기 
 				MemoDao.getInstance().update(dto);
 				isEditing=false;//수정중이 아니라고 표시한다.
-			}
+			} else {
 			isEditing=true;//수정중이라 표시한다.
+			}
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

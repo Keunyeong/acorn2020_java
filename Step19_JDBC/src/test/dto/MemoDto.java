@@ -4,7 +4,7 @@ public class MemoDto {
 	private int num;
 	private String content;
 	private String regdate;
-	public MemoDto() {}
+	public MemoDto(){}
 	public MemoDto(int num, String content, String regdate) {
 		super();
 		this.num = num;
@@ -28,6 +28,5 @@ public class MemoDto {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
-	}
-	
+	};
 }
