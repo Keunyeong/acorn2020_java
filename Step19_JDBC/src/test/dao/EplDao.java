@@ -1,40 +1,43 @@
 package test.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
 
-import test.dto.BirthDto;
+import test.dto.EplDto;
 import test.util.DBConnect;
 
-public class BirthDao {
-	private static BirthDao dao;
-	private BirthDao () {};
-	public static BirthDao getInstance() {
-		if(dao == null) {
-			dao = new BirthDao();
+public class EplDao {
+	private static EplDao dao;
+	private EplDao() {};
+	public static EplDao getInstance() {
+		if (dao == null) {
+			dao = new EplDao();
 		}
 		return dao;
 	}
-	public BirthDto getData(int num) {
-		BirthDto dto = null;
+	public EplDto getData(int num) {
+		EplDto dto = null;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = new DBConnect().getConn();
-			String sql = "SELECT name,birthday" + " FROM birth" + " WHERE num=?";
+			//실행할 sql 문
+			String sql = "SELECT team,point" 
+					+ " FROM epl" 
+					+ " WHERE rank=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				dto = new BirthDto();
-				dto.setNum(num);
-				dto.setName(rs.getString("name"));
-				dto.setBirthday(rs.getString("birthday"));
+				dto = new EplDto();
+				dto.setRank(num);
+				dto.setTeam(rs.getString("team"));
+				dto.setPoint(rs.getInt("point"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,28 +52,27 @@ public class BirthDao {
 			} catch (Exception e) {
 			}
 		}
-
 		return dto;
 	}
-	public List<BirthDto> getList() {
-		List<BirthDto> list = new ArrayList<>();
+	public List<EplDto> getList() {
+		List<EplDto> list = new ArrayList<>();
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = new DBConnect().getConn();
-			String sql = "SELECT num,name,birthday" + " FROM birth" + " ORDER BY num ASC";
+			String sql = "SELECT rank,team,point" + " FROM epl" + " ORDER BY num ASC";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				int num = rs.getInt("num");
-				String name = rs.getString("name");
-				String birthday = rs.getString("birthday");
-				BirthDto dto = new BirthDto();
-				dto.setNum(num);
-				dto.setName(name);
-				dto.setBirthday(birthday);
+				int rank = rs.getInt("num");
+				String team = rs.getString("name");
+				int point = rs.getInt("point");
+				EplDto dto = new EplDto();
+				dto.setRank(rank);
+				dto.setTeam(team);
+				dto.setPoint(point);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -86,22 +88,21 @@ public class BirthDao {
 			} catch (Exception e) {
 			}
 		}
-
 		return list;
 	}
-	public boolean update(BirthDto dto) {
+	public boolean insert(EplDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
 		try {
 			conn = new DBConnect().getConn();
-			String sql = "update memo"
-					+ " set name = ?,birthday = ?"
-					+ " where num = ?";
+			//실행할 sql(Insert or Update or Delete) 문 작성
+			String sql = "insert into epl" + " (rank,team,point)" + " values(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBirthday());
-			pstmt.setInt(3, dto.getNum());
+			// ? 에 바인딩할 내용이 있으면 여기서 한다.
+			pstmt.setInt(1, dto.getRank());
+			pstmt.setString(2, dto.getTeam());
+			pstmt.setInt(3, dto.getPoint());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,20 +121,19 @@ public class BirthDao {
 			return false;
 		}
 	}
-	public boolean insert(BirthDto dto) {
+	public boolean update(EplDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
 		try {
 			conn = new DBConnect().getConn();
 			//실행할 sql(Insert or Update or Delete) 문 작성
-			String sql = "insert into birth"
-					+ " (num,name,birthday)"
-					+ " values(birth_seq.nextval,?,?)   ";
+			String sql = "update epl" + " set team=?,point=?" + " where rank = ?";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 바인딩할 내용이 있으면 여기서 한다.
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBirthday());
+			pstmt.setString(1, dto.getTeam());
+			pstmt.setInt(2, dto.getPoint());
+			pstmt.setInt(3, dto.getRank());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,8 +159,8 @@ public class BirthDao {
 		try {
 			conn = new DBConnect().getConn();
 			//실행할 sql(Insert or Update or Delete) 문 작성
-			String sql = "delete from birth"
-					+ " where num = ?";
+			String sql = "delete from epl"
+					+ " where num = ? ";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 바인딩할 내용이 있으면 여기서 한다.
 			pstmt.setInt(1, num);
