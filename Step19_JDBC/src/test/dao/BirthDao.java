@@ -60,7 +60,7 @@ public class BirthDao {
 		ResultSet rs = null;
 		try {
 			conn = new DBConnect().getConn();
-			String sql = "SELECT num,name,birthday" + " FROM birth" + " ORDER BY num ASC";
+			String sql = "SELECT num,name,to_char(birthday,'YYYY\"년\"MM\"월\"DD\"일\"') as birthday" + " FROM birth" + " ORDER BY num ASC";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -96,12 +96,11 @@ public class BirthDao {
 		try {
 			conn = new DBConnect().getConn();
 			String sql = "update memo"
-					+ " set name = ?,birthday = ?"
+					+ " set name = ?"
 					+ " where num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBirthday());
-			pstmt.setInt(3, dto.getNum());
+			pstmt.setInt(2, dto.getNum());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -133,9 +133,10 @@ public class birthFrame extends JFrame
 				int selectedIndex=table.getSelectedRow();
 				int num=(int)model.getValueAt(selectedIndex, 0);
 				String name=(String)model.getValueAt(selectedIndex, 1);
-				String birthday=(String)model.getValueAt(selectedIndex, 2);
 				//수정할 회원의 정보를 MemberDto 객체에 담고 
-				BirthDto dto=new BirthDto(num, name, birthday);
+				BirthDto dto=new BirthDto();
+				dto.setNum(num);
+				dto.setName(name);
 				//DB에 저장하기 
 				BirthDao.getInstance().update(dto);
 				isEditing=false;
